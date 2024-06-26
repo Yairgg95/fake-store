@@ -6,7 +6,7 @@ import LoginPage from './pages/LoginPage'
 import HomePage from './pages/HomePage'
 import { Toaster } from 'sonner'
 import ProductsPage from './pages/ProductsPage'
-
+import PorductDetailPage from './pages/ProductDetailPage'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/productos/:id',
-    element: <p>Producto</p>
+    element: <PorductDetailPage />
   }
 ])
 

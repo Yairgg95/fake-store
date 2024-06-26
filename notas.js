@@ -18,7 +18,8 @@ Recibe 2 parametros (funcion y arreglo de dependencias [])
         console.log("si no tengo deps me ejecuto siempre que cambie el estado")
     })
 
-    // loop infinito useEffect(() => {
+    // loop infinito
+    // useEffect(() => {
     //     setCount(count +1 )
     //     console.log("WOOOOOOOO")
     // }, [count])

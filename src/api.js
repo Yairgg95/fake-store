@@ -31,5 +31,10 @@ export async function getProducts(){
 }
 
 export async function getProduct(id) {
+    const res = await fetch(`${API_URL}/products/${id}`, {
+        method: "GET",
+    })
     
+    const json = await res.json()
+    return json
 }

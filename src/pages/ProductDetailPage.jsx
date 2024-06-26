@@ -20,7 +20,7 @@ export default function PorductDetailPage() {
     }, [id])
 
     return (
-        <main className="flex flex-col">
+        <main className="flex flex-col ">
             <h1 className="text-4xl font-semibold text-center p-2">{product.brand}</h1>
             <div className="flex w-full justify-center">
             <img className="max-w-lg" src={product.images} alt={product.title} />

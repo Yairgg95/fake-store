@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getProduct } from "../api"
 import { toast } from "sonner"
+import { Link } from "react-router-dom"
 
 export default function PorductDetailPage() {
     const { id } = useParams()
@@ -20,9 +21,9 @@ export default function PorductDetailPage() {
     }, [id])
 
     return (
-        <main className="flex flex-col ">
+        <main className="flex  flex-col ">
             <h1 className="text-4xl font-semibold text-center p-2">{product.brand}</h1>
-            <div className="flex w-full justify-center">
+            <div className="flex flex-col w-full justify-center md:flex-row">
             <img className="max-w-lg" src={product.images} alt={product.title} />
             <div className="flex flex-col justify-center">
                 <div className="p-4 border-b-2">
@@ -39,13 +40,16 @@ export default function PorductDetailPage() {
                 </div>
             </div>
             </div>
-            <div>
+            <div className="flex flex-col">
                 <h3 className="p-2">Detalle del producto</h3>
                 <p className="w-full max-w-screen-md p-4 justify-center items-center ml-20">{product.description}</p>
                 <h3 className="p-2">Especificaciones</h3>
                 <p className="w-full max-w-screen-md p-4 justify-center items-center ml-20">Categoria: {product.category}</p>
                 <p className="w-full max-w-screen-md p-4 justify-center items-center ml-20">Dimensiones: Profundidad: {product.dimensions ? product.dimensions.depth : 'No disponible'}, 
                     Ancho: {product.dimensions ? product.dimensions.width : 'No disponible'}, Altura: {product.dimensions ? product.dimensions.height : 'No disponible'}</p>
+                    <div className="flex justify-center">
+                    <Link to='/productos' className="bg-teal-500 text-black p-2 hover:bg-teal-300 rounded text-center mt-4 w-full max-w-sm">Volver</Link>
+                    </div>
 
             </div>
         </main>

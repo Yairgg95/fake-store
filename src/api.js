@@ -31,8 +31,13 @@ export async function getProducts(){
 }
 
 export async function getProduct(id) {
+    const token = localStorage.getItem("token")
     const res = await fetch(`${API_URL}/products/${id}`, {
         method: "GET",
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
     })
     
     const json = await res.json()

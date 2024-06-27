@@ -1,14 +1,25 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { getProduct } from "../api"
 import { toast } from "sonner"
 import { Link } from "react-router-dom"
 
+
 export default function PorductDetailPage() {
     const { id } = useParams()
     const [product, setProduct] = useState({})
+    const navigate = useNavigate()
+    
 
     useEffect(() => {
+
+        const token = localStorage.getItem("token")
+        if (!token) {
+            toast.error("Debes iniciar sesión para ver los productos")
+            navigate("/login");
+            return;
+        }
+
         getProduct(id)
         .then((product) => {
             setProduct(product)
@@ -24,7 +35,7 @@ export default function PorductDetailPage() {
         <main className="flex  flex-col ">
             <h1 className="text-4xl font-semibold text-center p-2">{product.brand}</h1>
             <div className="flex flex-col w-full justify-center md:flex-row">
-            <img className="max-w-lg" src={product.images} alt={product.title} />
+            <img className="max-w-lg" src={product.thumbnail} alt={product.title} />
             <div className="flex flex-col justify-center">
                 <div className="p-4 border-b-2">
                 <h2>{product.title}</h2>
@@ -40,7 +51,7 @@ export default function PorductDetailPage() {
                 </div>
             </div>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col justify-center items-center">
                 <h3 className="p-2">Detalle del producto</h3>
                 <p className="w-full max-w-screen-md p-4 justify-center items-center ml-20">{product.description}</p>
                 <h3 className="p-2">Especificaciones</h3>

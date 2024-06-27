@@ -12,7 +12,7 @@ export default function useAuth() {
 
         setToken(tkn);
 
-        if (!token) {
+        if (!tkn) {
             toast.error("Debes iniciar sesión de nuevo")
             navigate("/login");
             return;
